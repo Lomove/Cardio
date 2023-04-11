@@ -1,0 +1,16 @@
+//vmax - вьюпорт при котором достигается максиальный размер шрифта.
+//vmin - минимальный вьюпорт, который берется в расчет
+//fmax - максимальный размер шрифта
+//fmin - минимальный размер шрифта
+$vmax: 1920;
+$vmin: 375;
+$fmax: 24;
+$fmin: 16;
+//Вычисления коэфициэнтов.
+$fmax-px: $fmax * 1px;
+$fmin-px: $fmin * 1px;
+$font-size-k: calc(($fmax - $fmin) / ($vmax - $vmin));
+$font-size-b: calc(($fmax-px - $vmax * ($fmax-px - $fmin-px) / ($vmax - $vmin)));
+$font-size-fun: calc(100vw * $font-size-k + $font-size-b);
+//// Подставляем куда-нибдуь размер шрифта. Первый с ограничением по макс. размеру, второй - без.
+// font-size: max($fmin-px, $font-size-fun
