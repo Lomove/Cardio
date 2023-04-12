@@ -78,3 +78,100 @@ select {
     scroll-behavior: auto !important;
   }
 }
+:root {
+  --color-brand--1: #fcff45;
+  --color-brand--2: #00bec4;
+  --color-dark--1: #0a151d;
+  --color-dark--2: #3f464d;
+  --color-light--1: rgb(170, 170, 170);
+  --color-light--2: #e8e8e8;
+  --color-light--3: rgb(220, 220, 220);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.content-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+.content-wrapper .tools {
+  width: 35%;
+  background-color: var(--color-dark--1);
+  color: var(--color-light--2);
+}
+.content-wrapper .tools .logo-wrapper {
+  height: 10%;
+}
+.content-wrapper .tools .logo-wrapper img {
+  margin: 1rem auto 0 auto;
+  max-height: 100%;
+}
+.content-wrapper .tools .workout-element {
+  margin: 1rem auto 0 auto;
+  width: 95%;
+  background-color: var(--color-dark--2);
+  border-radius: 0.5rem;
+}
+.content-wrapper .tools .workout-create {
+  display: flex;
+}
+.content-wrapper .tools .workout-create .workout-settings {
+  padding: 1rem 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-around;
+}
+.content-wrapper .tools .workout-create .workout-settings input,
+.content-wrapper .tools .workout-create .workout-settings select {
+  padding-left: 0.5rem;
+  height: 1.5rem;
+  width: 13ch;
+  background-color: var(--color-light--3);
+  border-radius: 0.3rem;
+  border: none;
+}
+.content-wrapper .tools .workout-create .workout-settings input:focus,
+.content-wrapper .tools .workout-create .workout-settings select:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+.content-wrapper .tools .workout-create .workout-settings .part {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+.content-wrapper .tools .workout-create .workout-settings .part .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.content-wrapper .tools .workout-create .confirm {
+  margin-right: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+}
+.content-wrapper .tools .workout-create .confirm .yes,
+.content-wrapper .tools .workout-create .confirm .no {
+  padding: 0.3em;
+  border-radius: 3em;
+  line-height: 0.9;
+  transition: all linear 0.3s;
+  cursor: default;
+}
+.content-wrapper .tools .workout-create .confirm .yes:hover,
+.content-wrapper .tools .workout-create .confirm .no:hover {
+  background-color: var(--color-dark--1);
+}
+.content-wrapper .tools .workout-create .confirm .no {
+  color: rgb(240, 29, 29);
+}
+.content-wrapper .map {
+  flex-grow: 1;
+  background-color: var(--color-light--1);
+}

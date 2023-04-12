@@ -1,2 +1,111 @@
 @import 'cssDrop';
 @import 'responsive-font-size';
+@import 'variables';
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.content-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+
+  .tools {
+    width: 35%;
+
+    background-color: var(--color-dark--1);
+
+    color: var(--color-light--2);
+
+    .logo-wrapper {
+      height: 10%;
+
+      img {
+        margin: 1rem auto 0 auto;
+        max-height: 100%;
+      }
+    }
+
+    .workout-element {
+      margin: 1rem auto 0 auto;
+      width: 95%;
+
+      background-color: var(--color-dark--2);
+      border-radius: 0.5rem;
+    }
+
+    .workout-create {
+      display: flex;
+
+      .workout-settings {
+        padding: 1rem 0;
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-around;
+
+        input,
+        select {
+          padding-left: 0.5rem;
+          height: 1.5rem;
+          width: 13ch;
+
+          background-color: var(--color-light--3);
+          border-radius: 0.3rem;
+          border: none;
+
+          &:focus {
+            outline: 0;
+            outline-offset: 0;
+          }
+        }
+
+        .part {
+          display: flex;
+          flex-flow: column;
+          justify-content: space-between;
+          gap: 0.7rem;
+
+          .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+          }
+        }
+      }
+
+      .confirm {
+        margin-right: 0.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.2rem;
+
+        .yes,
+        .no {
+          padding: 0.3em;
+          border-radius: 3em;
+
+          line-height: 0.9;
+
+          transition: all linear 0.3s;
+          cursor: default;
+
+          &:hover {
+            background-color: var(--color-dark--1);
+          }
+        }
+
+        .no {
+          color: rgb(240, 29, 29);
+        }
+      }
+    }
+  }
+
+  .map {
+    flex-grow: 1;
+
+    background-color: var(--color-light--1);
+  }
+}

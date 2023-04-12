@@ -4,9 +4,55 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="./icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./styles/css/index.css" />
     <title>Кардио</title>
   </head>
   <body>
-    Ну поехали!
+    <div class="content-wrapper">
+      <div class="tools">
+        <div class="logo-wrapper">
+          <img src="./icon.png" alt="Иллюстрация сердца и ритма" />
+        </div>
+
+        <div class="workout-create workout-element">
+          <div class="workout-settings">
+            <div class="left-part part">
+              <div class="first-row row">
+                <p>Тип</p>
+                <select name="type" id="type">
+                  <option value="jog">пробежка</option>
+                  <option value="bike">велосипед</option>
+                </select>
+              </div>
+
+              <div class="second-row row">
+                <p>Длительность</p>
+                <input type="number" name="duration" id="duration" placeholder="мин" />
+              </div>
+            </div>
+
+            <div class="right-part part">
+              <div class="first-row row">
+                <p>Расстояние</p>
+                <input type="number" name="distance" id="distance" placeholder="км" />
+              </div>
+
+              <div class="second-row row">
+                <p>Темп</p>
+                <input type="number" name="pace" id="pace" placeholder="шаг/мин" />
+              </div>
+            </div>
+          </div>
+
+          <div class="confirm">
+            <div class="no">&#10006;</div>
+            <div class="yes">&#10004;</div>
+          </div>
+        </div>
+      </div>
+      <div class="map"></div>
+    </div>
   </body>
 </html>
