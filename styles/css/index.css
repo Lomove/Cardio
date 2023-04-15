@@ -118,6 +118,9 @@ body {
 .content-wrapper .tools .workout-create {
   display: flex;
 }
+.content-wrapper .tools .workout-create.hidden {
+  display: none;
+}
 .content-wrapper .tools .workout-create .workout-settings {
   padding: 1rem 0;
   flex-grow: 1;
@@ -159,6 +162,8 @@ body {
 .content-wrapper .tools .workout-create .confirm .yes,
 .content-wrapper .tools .workout-create .confirm .no {
   padding: 0.3em;
+  background-color: inherit;
+  border: none;
   border-radius: 3em;
   line-height: 0.9;
   transition: all linear 0.3s;

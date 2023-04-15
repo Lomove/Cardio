@@ -19,11 +19,11 @@
           <img src="./icon.png" alt="Иллюстрация сердца и ритма" />
         </div>
 
-        <div class="workout-create workout-element">
+        <form class="workout-create workout-element hidden">
           <div class="workout-settings">
             <div class="left-part part">
               <div class="first-row row">
-                <p>Тип</p>
+                <label for="type">Тип</label>
                 <select name="type" id="type">
                   <option value="jog">пробежка</option>
                   <option value="bike">велосипед</option>
@@ -31,29 +31,29 @@
               </div>
 
               <div class="second-row row">
-                <p>Длительность</p>
+                <label for="duration">Длительность</label>
                 <input type="number" name="duration" id="duration" placeholder="мин" />
               </div>
             </div>
 
             <div class="right-part part">
               <div class="first-row row">
-                <p>Расстояние</p>
+                <label for="distance">Расстояние</label>
                 <input type="number" name="distance" id="distance" placeholder="км" />
               </div>
 
               <div class="second-row row">
-                <p>Темп</p>
+                <label for="pace">Темп</label>
                 <input type="number" name="pace" id="pace" placeholder="шаг/мин" />
               </div>
             </div>
           </div>
 
           <div class="confirm">
-            <div class="no">&#10006;</div>
-            <div class="yes">&#10004;</div>
+            <button type="submit" class="no">&#10006;</button>
+            <button type="submit" class="yes">&#10004;</button>
           </div>
-        </div>
+        </form>
       </div>
       <div id="map" class="map"></div>
     </div>

@@ -38,6 +38,10 @@ body {
     .workout-create {
       display: flex;
 
+      &.hidden {
+        display: none;
+      }
+
       .workout-settings {
         padding: 1rem 0;
         flex-grow: 1;
@@ -84,6 +88,9 @@ body {
         .yes,
         .no {
           padding: 0.3em;
+
+          background-color: inherit;
+          border: none;
           border-radius: 3em;
 
           line-height: 0.9;
