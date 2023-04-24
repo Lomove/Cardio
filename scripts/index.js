@@ -1,47 +1,96 @@
 'use strict';
 
-const workoutCreateSide = document.querySelector('.workout-create');
+const workoutCreateHTML = document.querySelector('.workout-create');
+const workoutTypeSelectHTML = document.querySelector('#type');
+const inputDistance = document.querySelector('#distance');
+const inputDuration = document.querySelector('#duration');
+const inputPace = document.querySelector('#pace');
+const labelInputPace = document.querySelector('.labelPace');
+const allWorkoutInputs = [inputDistance, inputDuration, inputPace];
 
-// navigator.geolocation.getCurrentPosition(
-//   (position) => {
-//     console.log(position);
-//   },
-//   () => {
-//     console.log('Ну ты и пипец');
-//   }
-// );
+class App {
+  static #map; // Яндекс карта
+  static #labels = []; //Массив всех меток
 
-let map;
+  constructor() {
+    // Получаем координата клиента, если вск ок запускаем загрузку карты #loadmap
+    App.#getPosition();
 
-// По готовности размещаем карту на страницу и зсоздаем прослушку на клик по ней
-ymaps.ready(() => {
-  map = new ymaps.Map('map', {
-    center: [55.16009176823716, 61.40247375140378],
-    zoom: 15,
-  });
+    // Прослушка на селектор в форме
+    workoutTypeSelectHTML.addEventListener('change', App.#toogleClimbField);
 
-  map.events.add('click', (e) => {
-    const coords = e.get('coords');
+    // Сброс значений форм и корректировка гео-объекта
+    workoutCreateHTML.addEventListener('submit', (e) => {
+      e.preventDefault();
 
+      allWorkoutInputs.forEach((input) => (input.value = ''));
+      App.#labels[App.#labels.length - 1].properties.set('iconContent', workoutTypeSelectHTML.value);
+    });
+  }
+
+  // Получение ткущих коорд юзера. После успешного получения координат вызывается загрузка карты
+  static #getPosition() {
+    navigator.geolocation.getCurrentPosition(App.#loadMap, () => {
+      console.log('Ошика');
+    });
+  }
+
+  // По готовности размещаем карту на странице и создаем прослушку на клик по ней
+  static #loadMap(position) {
+    ymaps.ready(() => {
+      App.#map = new ymaps.Map('map', {
+        center: [position.coords.latitude, position.coords.longitude],
+        zoom: 15,
+      });
+
+      App.#map.events.add('click', (e) => {
+        App.#showForm();
+
+        App.newWorkout(e);
+      });
+    });
+  }
+
+  // Отображение формы
+  static #showForm() {
+    workoutCreateHTML.classList.remove('hidden');
+    inputDistance.focus();
+  }
+
+  // Изменения формы по типу тренировки
+  static #toogleClimbField() {
+    if (workoutTypeSelectHTML.value === 'Пробежка') {
+      labelInputPace.textContent = 'Темп';
+      inputPace.placeholder = 'шаг/мин';
+    } else {
+      labelInputPace.textContent = 'Подъем';
+      inputPace.placeholder = 'м';
+    }
+  }
+
+  static newWorkout(e) {
     // Создаем новый гео-объект
-    const newGeoObj = new ymaps.GeoObject(
-      {
-        geometry: {
-          type: 'Point',
-          coordinates: coords,
+    App.#labels.push(
+      new ymaps.GeoObject(
+        {
+          geometry: {
+            type: 'Point',
+            coordinates: e.get('coords'),
+          },
+          properties: {
+            iconContent: '',
+          },
         },
-        properties: {
-          iconContent: 'Тестовая метка',
-        },
-      },
-      {
-        preset: 'islands#blackStretchyIcon',
-        draggable: true,
-      }
+        {
+          preset: 'islands#blackStretchyIcon',
+          draggable: true,
+        }
+      )
     );
-    // Помещаем ГО на карту
-    map.geoObjects.add(newGeoObj);
 
-    workoutCreateSide.classList.remove('hidden');
-  });
-});
+    // Помещаем ГО на карту
+    App.#map.geoObjects.add(App.#labels[App.#labels.length - 1]);
+  }
+}
+
+const app = new App();
